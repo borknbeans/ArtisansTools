@@ -52,8 +52,9 @@ public class TextureCombiner {
     private static int getPriorityPixel(NativeImage firstImage, NativeImage secondImage, int x, int y) {
         // Check if pixel from the second image is valid and not fully transparent
         if (x < secondImage.getWidth() && y < secondImage.getHeight()) {
-            if (secondImage.getOpacity(x, y) > 0) {
-                return secondImage.getColor(x, y);
+            int color = secondImage.getColor(x, y);
+            if (color != 0) {
+                return color;
             }
         }
         // Use pixel from the first image if second image pixel is fully transparent or out of bounds
