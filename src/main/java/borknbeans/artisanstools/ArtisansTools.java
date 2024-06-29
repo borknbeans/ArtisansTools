@@ -2,8 +2,11 @@ package borknbeans.artisanstools;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class ArtisansTools implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -17,6 +20,6 @@ public class ArtisansTools implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		ModItems.registerItems();
 	}
 }
