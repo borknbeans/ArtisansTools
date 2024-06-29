@@ -1,11 +1,15 @@
 package borknbeans.artisanstools;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ArtisansTools implements ModInitializer {

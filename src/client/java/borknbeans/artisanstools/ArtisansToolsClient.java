@@ -15,6 +15,7 @@ public class ArtisansToolsClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 
+		/*
 		keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.examplemod.spook", // The translation key of the keybinding's name
 				InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
@@ -24,12 +25,9 @@ public class ArtisansToolsClient implements ClientModInitializer {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (keyBinding.wasPressed()) {
-				Identifier firstTexture = Identifier.of("minecraft", "textures/item/diamond_sword.png");
-				Identifier secondTexture = Identifier.of("minecraft", "textures/item/iron_pickaxe.png");
-				TextureCombiner.combineAndSaveTexture(firstTexture, secondTexture);
+
 			}
 		});
-
-        //
+		 */
     }
 }

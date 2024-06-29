@@ -1,6 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "artisans-tools:item/combined_item"
+    "layer0": "artisans-tools:item/bottom",
+    "layer1": "artisans-tools:item/top"
   }
 }
