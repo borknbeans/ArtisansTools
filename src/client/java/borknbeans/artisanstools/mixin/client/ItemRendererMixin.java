@@ -48,11 +48,14 @@ public class ItemRendererMixin {
         for (BakedQuad bakedQuad : quads) {
             String layerName = bakedQuad.getSprite().getContents().getId().getPath();
 
+            // 0xAARRGGBB format
             int i = Colors.WHITE;
-            if (layerName.contains("bottom")) {
-                i = Colors.RED;
-            } else if (layerName.contains("top")) {
-                i = Colors.BLUE;
+            if (layerName.contains("handle")) {
+                i = 0xFF55FF55;
+            } else if (layerName.contains("head")) {
+                i = 0xFFAA00AA;
+            } else if (layerName.contains("binding")) {
+                i = 0xFFFF5555;
             }
 
             float f = (float) ColorHelper.Argb.getAlpha((int)i) / 255.0f;
