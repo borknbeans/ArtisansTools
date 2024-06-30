@@ -8,7 +8,10 @@ import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.BakedQuad;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
@@ -48,8 +51,17 @@ public class ItemRendererMixin {
         for (BakedQuad bakedQuad : quads) {
             String layerName = bakedQuad.getSprite().getContents().getId().getPath();
 
+            NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);
+
             // 0xAARRGGBB format
             int i = Colors.WHITE;
+            if (data != null) {
+                NbtCompound value = data.copyNbt();
+
+                i = value.getInt("Head");
+            }
+
+            /*
             if (layerName.contains("handle")) {
                 i = 0xFF55FF55;
             } else if (layerName.contains("head")) {
@@ -57,6 +69,7 @@ public class ItemRendererMixin {
             } else if (layerName.contains("binding")) {
                 i = 0xFFFF5555;
             }
+             */
 
             float f = (float) ColorHelper.Argb.getAlpha((int)i) / 255.0f;
             float g = (float)ColorHelper.Argb.getRed((int)i) / 255.0f;

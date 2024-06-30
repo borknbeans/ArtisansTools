@@ -1,4 +1,4 @@
 package borknbeans.artisanstools.materials;
 
-public class MaterialManager {
+public class ArtisanMaterial {
 }
