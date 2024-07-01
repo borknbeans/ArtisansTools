@@ -9,11 +9,11 @@
     "P": {
       "tag": "artisans-tools:pickaxe_heads"
     },
-    "H": {
-      "tag": "artisans-tools:handles"
-    },
     "B": {
       "tag": "artisans-tools:bindings"
+    },
+    "H": {
+      "tag": "artisans-tools:handles"
     }
   },
   "result": {
