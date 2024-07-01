@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public abstract class MaterialTagProvider extends FabricTagProvider<ArtisanMaterial> {
+public abstract class MaterialTagProvider extends FabricTagProvider<ArtisanMaterials> {
 
     public MaterialTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture, @Nullable FabricTagProvider.BlockTagProvider blockTagProvider) {
         super(output, MaterialRegistry.ARTISAN_MATERIAL, completableFuture);
