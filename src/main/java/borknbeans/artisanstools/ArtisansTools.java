@@ -1,5 +1,6 @@
 package borknbeans.artisanstools;
 
+import borknbeans.artisanstools.block.ModBlocks;
 import borknbeans.artisanstools.item.ModItemGroups;
 import borknbeans.artisanstools.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -14,6 +15,8 @@ public class ArtisansTools implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
+
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 }
