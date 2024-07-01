@@ -1,6 +1,6 @@
 package borknbeans.artisanstools.mixin.client;
 
-import borknbeans.artisanstools.tools.ModItems;
+import borknbeans.artisanstools.item.ModItems;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
@@ -26,7 +26,7 @@ public class ItemRendererMixin {
 
     @Inject(at = @At(value = "HEAD"), method = "renderBakedItemModel", cancellable = true)
     public void renderBakedItemModel(BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices, CallbackInfo ci) {
-        if (stack.isOf(ModItems.COMBINED_ITEM)) {
+        if (stack.isOf(ModItems.PICKAXE)) {
             renderBakedItemModelWithColor(model, stack, light, overlay, matrices, vertices, 0f, 0f, 0f);
             ci.cancel();
         }
@@ -43,15 +43,14 @@ public class ItemRendererMixin {
     }
 
     private void renderBakedItemQuadsWithColor(MatrixStack matrices, VertexConsumer vertices, List<BakedQuad> quads, ItemStack stack, int light, int overlay) {
-
         MatrixStack.Entry entry = matrices.peek();
         for (BakedQuad bakedQuad : quads) {
-            String layerName = bakedQuad.getSprite().getContents().getId().getPath();
-
-            NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);
 
             // 0xAARRGGBB format
             int i = Colors.WHITE;
+            /*
+            String layerName = bakedQuad.getSprite().getContents().getId().getPath();
+            NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);
             if (data != null) {
                 NbtCompound value = data.copyNbt();
 
@@ -63,6 +62,7 @@ public class ItemRendererMixin {
                     i = value.getInt("binding");
                 }
             }
+             */
 
             float f = (float) ColorHelper.Argb.getAlpha((int)i) / 255.0f;
             float g = (float)ColorHelper.Argb.getRed((int)i) / 255.0f;

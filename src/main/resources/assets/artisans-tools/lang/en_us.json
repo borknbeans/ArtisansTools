@@ -1,0 +1,8 @@
+{
+  "item.artisans-tools.pickaxe": "Pickaxe",
+  "item.artisans-tools.pickaxe_head": "Pickaxe Head",
+  "item.artisans-tools.handle": "Handle",
+  "item.artisans-tools.binding": "Binding",
+
+  "itemgroup.test": "Test Item Group"
+}
