@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W  ",
+    "W  ",
+    "W  "
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "id": "artisans-tools:combined_item",
+    "count": 1
+  }
+}
