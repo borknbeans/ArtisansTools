@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "artisans-tools:item/handle",
+    "layer1": "artisans-tools:item/pickaxe_head",
+    "layer2": "artisans-tools:item/binding"
+  }
+}

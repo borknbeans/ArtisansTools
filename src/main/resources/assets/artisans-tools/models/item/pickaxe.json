@@ -1,8 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "artisans-tools:item/handle",
-    "layer1": "artisans-tools:item/head",
-    "layer2": "artisans-tools:item/binding"
-  }
-}
