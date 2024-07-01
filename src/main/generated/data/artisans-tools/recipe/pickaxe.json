@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "B": {
-      "item": "artisans-tools:binding"
+      "tag": "artisans-tools:bindings"
     },
     "H": {
-      "item": "artisans-tools:handle"
+      "tag": "artisans-tools:handles"
     },
     "P": {
-      "item": "artisans-tools:pickaxe_head"
+      "tag": "artisans-tools:pickaxe_heads"
     }
   },
   "pattern": [

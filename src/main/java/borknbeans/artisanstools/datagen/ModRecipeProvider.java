@@ -1,6 +1,7 @@
 package borknbeans.artisanstools.datagen;
 
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
@@ -26,9 +27,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern(" P ")
                 .pattern(" B ")
                 .pattern(" H ")
-                .input('P', ModItems.PICKAXE_HEAD)
-                .input('B', ModItems.BINDING)
-                .input('H', ModItems.HANDLE)
+                .input('P', ModTags.Items.PICKAXE_HEADS)
+                .input('B', ModTags.Items.BINDINGS)
+                .input('H', ModTags.Items.HANDLES)
                 .criterion(hasItem(ModItems.PICKAXE), conditionsFromItem(ModItems.PICKAXE))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.PICKAXE)));
     }
