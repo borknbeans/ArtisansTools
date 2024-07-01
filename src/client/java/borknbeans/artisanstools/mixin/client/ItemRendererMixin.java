@@ -1,12 +1,10 @@
 package borknbeans.artisanstools.mixin.client;
 
-import borknbeans.artisanstools.ModItems;
+import borknbeans.artisanstools.tools.ModItems;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.BakedQuad;
-import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
@@ -36,7 +34,6 @@ public class ItemRendererMixin {
 
     private void renderBakedItemModelWithColor(BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices, float red, float green, float blue) {
         Random random = Random.create();
-        long l = 42L;
         for (Direction direction : Direction.values()) {
             random.setSeed(42L);
             renderBakedItemQuadsWithColor(matrices, vertices, model.getQuads(null, direction, random), stack, light, overlay);
@@ -58,18 +55,14 @@ public class ItemRendererMixin {
             if (data != null) {
                 NbtCompound value = data.copyNbt();
 
-                i = value.getInt("Head");
+                if (layerName.contains("handle")) {
+                    i = value.getInt("handle");
+                } else if (layerName.contains("head")) {
+                    i = value.getInt("head");
+                } else if (layerName.contains("binding")) {
+                    i = value.getInt("binding");
+                }
             }
-
-            /*
-            if (layerName.contains("handle")) {
-                i = 0xFF55FF55;
-            } else if (layerName.contains("head")) {
-                i = 0xFFAA00AA;
-            } else if (layerName.contains("binding")) {
-                i = 0xFFFF5555;
-            }
-             */
 
             float f = (float) ColorHelper.Argb.getAlpha((int)i) / 255.0f;
             float g = (float)ColorHelper.Argb.getRed((int)i) / 255.0f;
