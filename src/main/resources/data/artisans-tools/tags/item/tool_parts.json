@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#artisans-tools:pickaxe_heads",
+    "#artisans-tools:handles",
+    "#artisans-tools:bindings"
+  ]
+}

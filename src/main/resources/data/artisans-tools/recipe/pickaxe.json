@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    " B ",
+    " H "
+  ],
+  "key": {
+    "P": {
+      "tag": "artisans-tools:pickaxe_heads"
+    },
+    "H": {
+      "tag": "artisans-tools:handles"
+    },
+    "B": {
+      "tag": "artisans-tools:bindings"
+    }
+  },
+  "result": {
+    "id": "artisans-tools:pickaxe",
+    "count": 1
+  }
+}
