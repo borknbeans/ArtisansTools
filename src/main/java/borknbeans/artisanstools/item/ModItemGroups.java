@@ -19,7 +19,7 @@ public class ModItemGroups {
                         entries.add(ModItems.HANDLE);
                         entries.add(ModItems.BINDING);
 
-                        entries.add(ModBlocks.ITEM_FORGE_BLOCK);
+                        entries.add(ModBlocks.ITEM_CONTAINER_BLOCK);
                     }).build());
 
     public static void registerItemGroups() {

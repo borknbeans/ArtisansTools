@@ -16,11 +16,11 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
-public class ItemForgeBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class ItemContainerBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(9, ItemStack.EMPTY);
 
-    public ItemForgeBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.ITEM_FORGE_BLOCK_ENTITY, pos, state);
+    public ItemContainerBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.ITEM_CONTAINER_BLOCK_ENTITY, pos, state);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ItemForgeBlockEntity extends BlockEntity implements NamedScreenHand
 
     @Override
     public Text getDisplayName() {
-        return Text.translatable("block.artisans-tools.item_forge");
+        return Text.translatable("block.artisans-tools.item_container");
     }
 
     @Nullable

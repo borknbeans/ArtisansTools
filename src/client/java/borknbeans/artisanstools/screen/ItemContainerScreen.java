@@ -9,10 +9,10 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class ItemForgeScreen extends HandledScreen<ItemForgeScreenHandler> {
-    private static final Identifier TEXTURE = Identifier.of(ArtisansTools.MOD_ID, "textures/gui/item_forge_gui.png");
+public class ItemContainerScreen extends HandledScreen<ItemContainerScreenHandler> {
+    private static final Identifier TEXTURE = Identifier.of(ArtisansTools.MOD_ID, "textures/gui/item_container_gui.png");
 
-    public ItemForgeScreen(ItemForgeScreenHandler handler, PlayerInventory inventory, Text title) {
+    public ItemContainerScreen(ItemContainerScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 

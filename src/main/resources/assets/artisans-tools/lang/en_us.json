@@ -6,6 +6,5 @@
 
   "itemgroup.test": "Test Item Group",
 
-  "block.artisans-tools.tool_forge": "Tool Forge",
-  "block.artisans-tools.item_forge": "Item Forge"
+  "block.artisans-tools.item_container": "Item Container"
 }

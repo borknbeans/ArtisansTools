@@ -1,24 +1,22 @@
 package borknbeans.artisanstools.screen;
 
-import borknbeans.artisanstools.ArtisansTools;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class ItemForgeScreenHandler extends ScreenHandler {
+public class ItemContainerScreenHandler extends ScreenHandler {
     private final Inventory inventory;
 
-    public ItemForgeScreenHandler(int syncId, PlayerInventory playerInventory) {
+    public ItemContainerScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new SimpleInventory(9));
     }
 
-    public ItemForgeScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
-        super(ModScreenHandlers.ITEM_FORGE_SCREEN_HANDLER, syncId);
+    public ItemContainerScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(ModScreenHandlers.ITEM_CONTAINER_SCREEN_HANDLER, syncId);
         checkSize(inventory, 9);
         this.inventory = inventory;
         //some inventories do custom logic when a player opens it.

@@ -1,6 +1,6 @@
 package borknbeans.artisanstools.block.custom;
 
-import borknbeans.artisanstools.block.entity.ItemForgeBlockEntity;
+import borknbeans.artisanstools.block.entity.ItemContainerBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -16,10 +16,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class ItemForgeBlock extends BlockWithEntity {
-    public static final MapCodec<ItemForgeBlock> CODEC = ItemForgeBlock.createCodec(ItemForgeBlock::new);
+public class ItemContainerBlock extends BlockWithEntity {
+    public static final MapCodec<ItemContainerBlock> CODEC = ItemContainerBlock.createCodec(ItemContainerBlock::new);
 
-    public ItemForgeBlock(Settings settings) {
+    public ItemContainerBlock(Settings settings) {
         super(settings);
     }
 
@@ -32,7 +32,7 @@ public class ItemForgeBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ItemForgeBlockEntity(pos, state);
+        return new ItemContainerBlockEntity(pos, state);
     }
 
     @Override
@@ -58,8 +58,8 @@ public class ItemForgeBlock extends BlockWithEntity {
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof ItemForgeBlockEntity) {
-                ItemScatterer.spawn(world, pos, (ItemForgeBlockEntity)blockEntity);
+            if (blockEntity instanceof ItemContainerBlockEntity) {
+                ItemScatterer.spawn(world, pos, (ItemContainerBlockEntity)blockEntity);
                 // update comparators
                 world.updateComparators(pos,this);
             }
