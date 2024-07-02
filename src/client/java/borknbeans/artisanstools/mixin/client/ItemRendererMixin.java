@@ -43,19 +43,32 @@ public class ItemRendererMixin {
     }
 
     private void renderBakedItemQuadsWithColor(MatrixStack matrices, VertexConsumer vertices, List<BakedQuad> quads, ItemStack stack, int light, int overlay) {
+        int headColor = Colors.WHITE;
+        int bindingColor = Colors.WHITE;
+        int handleColor = Colors.WHITE;
+
+
+        NbtComponent component = stack.getComponents().get(DataComponentTypes.CUSTOM_DATA);
+        if (component != null) {
+            NbtCompound compound = component.copyNbt();
+
+            headColor = compound.getInt("head");
+            bindingColor = compound.getInt("binding");
+            handleColor = compound.getInt("handle");
+        }
+
         MatrixStack.Entry entry = matrices.peek();
         for (BakedQuad bakedQuad : quads) {
 
             // 0xAARRGGBB format
             int i = Colors.WHITE;
-
             String layerName = bakedQuad.getSprite().getContents().getId().getPath();
             if (layerName.contains("handle")) {
-                i = Colors.RED;
+                i = handleColor;
             } else if (layerName.contains("head")) {
-                i = Colors.BLUE;
+                i = headColor;
             } else if (layerName.contains("binding")) {
-                i = Colors.WHITE;
+                i = bindingColor;
             }
             /*
             NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);
