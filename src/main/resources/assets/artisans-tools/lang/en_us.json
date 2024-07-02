@@ -4,5 +4,8 @@
   "item.artisans-tools.handle": "Handle",
   "item.artisans-tools.binding": "Binding",
 
-  "itemgroup.test": "Test Item Group"
+  "itemgroup.test": "Test Item Group",
+
+  "block.artisans-tools.tool_forge": "Tool Forge",
+  "block.artisans-tools.item_forge": "Item Forge"
 }

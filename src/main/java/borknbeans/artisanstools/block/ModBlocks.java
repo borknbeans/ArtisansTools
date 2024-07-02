@@ -1,8 +1,10 @@
 package borknbeans.artisanstools.block;
 
 import borknbeans.artisanstools.ArtisansTools;
+import borknbeans.artisanstools.block.custom.ItemForgeBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -11,8 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    // Can also copy from existing block instead of creating new settings
-    // public static final Block EXAMPLE_BLOCK = registerBlock("example_block", new Block(AbstractBlock.Settings.create().strength(4.0f)));
+    public static final Block ITEM_FORGE_BLOCK = registerBlock("item_forge", new ItemForgeBlock(AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

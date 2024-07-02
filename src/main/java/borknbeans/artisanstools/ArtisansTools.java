@@ -1,8 +1,10 @@
 package borknbeans.artisanstools;
 
 import borknbeans.artisanstools.block.ModBlocks;
+import borknbeans.artisanstools.block.entity.ModBlockEntities;
 import borknbeans.artisanstools.item.ModItemGroups;
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,5 +20,8 @@ public class ArtisansTools implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 	}
 }

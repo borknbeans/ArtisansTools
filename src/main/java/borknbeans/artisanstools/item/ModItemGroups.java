@@ -1,6 +1,7 @@
 package borknbeans.artisanstools.item;
 
 import borknbeans.artisanstools.ArtisansTools;
+import borknbeans.artisanstools.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,8 @@ public class ModItemGroups {
                         entries.add(ModItems.PICKAXE_HEAD);
                         entries.add(ModItems.HANDLE);
                         entries.add(ModItems.BINDING);
+
+                        entries.add(ModBlocks.ITEM_FORGE_BLOCK);
                     }).build());
 
     public static void registerItemGroups() {
