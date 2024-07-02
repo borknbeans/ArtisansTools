@@ -14,6 +14,12 @@ public class ModScreenHandlers {
                             FeatureFlags.DEFAULT_ENABLED_FEATURES)
             );
 
+    public static final ScreenHandlerType<ItemForgeScreenHandler> ITEM_FORGE_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(ArtisansTools.MOD_ID, "item_forge"),
+                    new ScreenHandlerType<>(ItemForgeScreenHandler::new,
+                            FeatureFlags.DEFAULT_ENABLED_FEATURES)
+            );
+
     public static void registerScreenHandlers() {
         ArtisansTools.LOGGER.info("Registering Screen Handlers for " + ArtisansTools.MOD_ID);
 

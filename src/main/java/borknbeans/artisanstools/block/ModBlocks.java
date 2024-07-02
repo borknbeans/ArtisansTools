@@ -2,6 +2,7 @@ package borknbeans.artisanstools.block;
 
 import borknbeans.artisanstools.ArtisansTools;
 import borknbeans.artisanstools.block.custom.ItemContainerBlock;
+import borknbeans.artisanstools.block.custom.ItemForgeBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -14,6 +15,7 @@ import net.minecraft.util.Identifier;
 public class ModBlocks {
 
     public static final Block ITEM_CONTAINER_BLOCK = registerBlock("item_container", new ItemContainerBlock(AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).nonOpaque()));
+    public static final Block ITEM_FORGE_BLOCK = registerBlock("item_forge", new ItemForgeBlock(AbstractBlock.Settings.copy(Blocks.CRAFTING_TABLE).nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
