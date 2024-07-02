@@ -12,7 +12,7 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    public static final Item PICKAXE_HEAD = registerItem("pickaxe_head", new Item(new Item.Settings()));
+    public static final Item PICKAXE_HEAD = registerItem("pickaxe_head", new Item(new ModularToolSettings()));
     public static final Item HANDLE = registerItem("handle", new Item(new Item.Settings()));
     public static final Item BINDING = registerItem("binding", new Item(new Item.Settings()));
 

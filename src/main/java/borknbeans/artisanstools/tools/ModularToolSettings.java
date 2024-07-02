@@ -20,7 +20,7 @@ public class ModularToolSettings extends Item.Settings {
 
     // TODO: Constructor that takes in materials
 
-
+/*
     @Override
     public Item.Settings maxDamage(int maxDamage) {
         this.component(DataComponentTypes.MAX_DAMAGE, maxDamage);
@@ -29,4 +29,5 @@ public class ModularToolSettings extends Item.Settings {
 
         return this;
     }
+ */
 }
