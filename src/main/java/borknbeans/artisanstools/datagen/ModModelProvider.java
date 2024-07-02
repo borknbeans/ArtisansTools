@@ -39,43 +39,6 @@ public class ModModelProvider extends FabricModelProvider {
                 Identifier.of(ArtisansTools.MOD_ID, "item/binding")
         ));
         itemModelGenerator.writer.accept(Identifier.of(ArtisansTools.MOD_ID, "item/pickaxe"), pickaxeModelJson);
-
-        /*
-        // TODO: Add rotations as needed
-        Models.GENERATED_THREE_LAYERS.upload(
-                Identifier.of(ArtisansTools.MOD_ID, "item/pickaxe"),
-                TextureMap.layered(
-                        Identifier.of(ArtisansTools.MOD_ID, "item/handle"),
-                        Identifier.of(ArtisansTools.MOD_ID, "item/pickaxe_head"),
-                        Identifier.of(ArtisansTools.MOD_ID, "item/binding")), itemModelGenerator.writer);
-         */
-
-        /*
-
-        "display": {
-    "thirdperson_righthand": {
-      "rotation": [ 0, -90, 55 ],
-      "translation": [ 0, 4.0, 0.5 ],
-      "scale": [ 0.85, 0.85, 0.85 ]
-    },
-    "thirdperson_lefthand": {
-      "rotation": [ 0, 90, -55 ],
-      "translation": [ 0, 4.0, 0.5 ],
-      "scale": [ 0.85, 0.85, 0.85 ]
-    },
-    "firstperson_righthand": {
-      "rotation": [ 0, -90, 25 ],
-      "translation": [ 1.13, 3.2, 1.13 ],
-      "scale": [ 0.68, 0.68, 0.68 ]
-    },
-    "firstperson_lefthand": {
-      "rotation": [ 0, 90, -25 ],
-      "translation": [ 1.13, 3.2, 1.13 ],
-      "scale": [ 0.68, 0.68, 0.68 ]
-    }
-  },
-
-         */
     }
 
     private JsonElement generateCustomItemModelJson(List<Identifier> textures) {

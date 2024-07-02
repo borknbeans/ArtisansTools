@@ -48,19 +48,21 @@ public class ItemRendererMixin {
 
             // 0xAARRGGBB format
             int i = Colors.WHITE;
-            /*
+
             String layerName = bakedQuad.getSprite().getContents().getId().getPath();
+            if (layerName.contains("handle")) {
+                i = Colors.RED;
+            } else if (layerName.contains("head")) {
+                i = Colors.BLUE;
+            } else if (layerName.contains("binding")) {
+                i = Colors.WHITE;
+            }
+            /*
             NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);
             if (data != null) {
                 NbtCompound value = data.copyNbt();
 
-                if (layerName.contains("handle")) {
-                    i = value.getInt("handle");
-                } else if (layerName.contains("head")) {
-                    i = value.getInt("head");
-                } else if (layerName.contains("binding")) {
-                    i = value.getInt("binding");
-                }
+
             }
              */
 
