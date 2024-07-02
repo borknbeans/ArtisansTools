@@ -1,10 +1,9 @@
 package borknbeans.artisanstools.screen;
 
-import borknbeans.artisanstools.ArtisansTools;
 import borknbeans.artisanstools.block.ModBlocks;
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.util.ModDataComponentTypes;
 import borknbeans.artisanstools.util.ModTags;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -14,7 +13,6 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -94,8 +92,8 @@ public class ItemForgeScreenHandler extends ScreenHandler {
         if (!s0.isEmpty() && !s1.isEmpty() && !s2.isEmpty() && s0.isIn(ModTags.Items.HANDLES) && s1.isIn(ModTags.Items.BINDINGS) && s2.isIn(ModTags.Items.PICKAXE_HEADS)) {
             ItemStack recipeResult = ModItems.PICKAXE.getDefaultStack();
 
-            NbtCompound compound = s2.getComponents().get(DataComponentTypes.CUSTOM_DATA).copyNbt();
-            recipeResult.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
+            NbtCompound compound = s2.getComponents().get(ModDataComponentTypes.MATERIALS).copyNbt();
+            recipeResult.apply(ModDataComponentTypes.MATERIALS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
                 for (String key: compound.getKeys()) {
                     NbtElement element = compound.get(key);
 

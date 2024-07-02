@@ -1,6 +1,6 @@
 package borknbeans.artisanstools.tools;
 
-import net.minecraft.component.DataComponentTypes;
+import borknbeans.artisanstools.util.ModDataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
@@ -14,8 +14,10 @@ public class ModularToolSettings extends Item.Settings {
         nbt.putInt("handle", 0xFFb38147);
         nbt.putInt("binding", 0xFFb38147);
 
+        // TODO: NBT put material
+
         NbtComponent component = NbtComponent.of(nbt);
-        this.component(DataComponentTypes.CUSTOM_DATA, component);
+        this.component(ModDataComponentTypes.MATERIALS, component);
     }
 
     // TODO: Constructor that takes in materials

@@ -1,12 +1,12 @@
 package borknbeans.artisanstools.mixin.client;
 
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.util.ModDataComponentTypes;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.BakedQuad;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -48,7 +48,7 @@ public class ItemRendererMixin {
         int handleColor = Colors.WHITE;
 
 
-        NbtComponent component = stack.getComponents().get(DataComponentTypes.CUSTOM_DATA);
+        NbtComponent component = stack.getComponents().get(ModDataComponentTypes.MATERIALS);
         if (component != null) {
             NbtCompound compound = component.copyNbt();
 
