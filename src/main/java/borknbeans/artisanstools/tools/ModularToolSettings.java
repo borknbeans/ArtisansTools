@@ -5,13 +5,19 @@ import borknbeans.artisanstools.util.ModDataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 
 public class ModularToolSettings extends Item.Settings {
     public ModularToolSettings() {
         // TODO: This is only temporary
 
         NbtCompound nbt = new NbtCompound();
-        nbt.putString("material", Materials.getRandomMaterial().toString());
+        NbtList materials = new NbtList();
+        NbtString material = NbtString.of(Materials.getRandomMaterial().toString());
+        materials.add(0, material);
+
+        nbt.put("materials", materials);
 
         NbtComponent component = NbtComponent.of(nbt);
         this.component(ModDataComponentTypes.ARTISANS_TOOLS, component);

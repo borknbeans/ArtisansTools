@@ -84,7 +84,8 @@ public class ItemForgeScreenHandler extends ScreenHandler {
             return;
         }
 
-        ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+        // TODO: This all needs to be rewritten nicely
+        // ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
 
         ItemStack s0 = inputInventory.getStack(0);
         ItemStack s1 = inputInventory.getStack(1);
@@ -98,14 +99,14 @@ public class ItemForgeScreenHandler extends ScreenHandler {
             NbtCompound c2 = s2.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
             recipeResult.apply(ModDataComponentTypes.ARTISANS_TOOLS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
 
-                NbtElement m0 = c0.get("material");
-                NbtElement m1 = c1.get("material");
-                NbtElement m2 = c2.get("material");
+                NbtElement m0 = c0.getList("materials", 8).get(0);
+                NbtElement m1 = c1.getList("materials", 8).get(0);
+                NbtElement m2 = c2.getList("materials", 8).get(0);
 
                 NbtList materialList = new NbtList();
-                materialList.add(0, m0);
-                materialList.add(1, m1);
-                materialList.add(2, m2);
+                materialList.add(0, m0); // handle
+                materialList.add(1, m2); // pickaxe head
+                materialList.add(2, m1); // binding
 
                 currentNbt.put("materials", materialList);
             }));

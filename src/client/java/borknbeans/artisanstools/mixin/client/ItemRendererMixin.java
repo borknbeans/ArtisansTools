@@ -3,6 +3,7 @@ package borknbeans.artisanstools.mixin.client;
 import borknbeans.artisanstools.item.ModItems;
 import borknbeans.artisanstools.materials.Materials;
 import borknbeans.artisanstools.util.ModDataComponentTypes;
+import borknbeans.artisanstools.util.ModTags;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
@@ -28,13 +29,13 @@ public class ItemRendererMixin {
 
     @Inject(at = @At(value = "HEAD"), method = "renderBakedItemModel", cancellable = true)
     public void renderBakedItemModel(BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices, CallbackInfo ci) {
-        if (stack.isOf(ModItems.PICKAXE)) {
-            renderBakedItemModelWithColor(model, stack, light, overlay, matrices, vertices, 0f, 0f, 0f);
+        if (stack.isOf(ModItems.PICKAXE) || stack.isIn(ModTags.Items.TOOL_PARTS)) {
+            renderBakedItemModelWithColor(model, stack, light, overlay, matrices, vertices);
             ci.cancel();
         }
     }
 
-    private void renderBakedItemModelWithColor(BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices, float red, float green, float blue) {
+    private void renderBakedItemModelWithColor(BakedModel model, ItemStack stack, int light, int overlay, MatrixStack matrices, VertexConsumer vertices) {
         Random random = Random.create();
         for (Direction direction : Direction.values()) {
             random.setSeed(42L);
