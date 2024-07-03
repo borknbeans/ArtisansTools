@@ -5,10 +5,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.random.Random;
 
 public enum Materials {
-    WOOD(Identifier.of(ArtisansTools.MOD_ID, "wood"), 0xFF6A501E),
-    STONE(Identifier.of(ArtisansTools.MOD_ID, "stone"), 0xFF767676),
-    IRON(Identifier.of(ArtisansTools.MOD_ID, "iron"), 0xFFD8D8D8),
-    GOLD(Identifier.of(ArtisansTools.MOD_ID, "gold"), 0xFFFDF55F);
+    WOOD(Identifier.of(ArtisansTools.MOD_ID, "wood"), 0xFF8c6931),
+    STONE(Identifier.of(ArtisansTools.MOD_ID, "stone"), 0xFF434343),
+    IRON(Identifier.of(ArtisansTools.MOD_ID, "iron"), 0xFFffffff),
+    GOLD(Identifier.of(ArtisansTools.MOD_ID, "gold"), 0xFFffc700);
 
 
     private final Identifier id;

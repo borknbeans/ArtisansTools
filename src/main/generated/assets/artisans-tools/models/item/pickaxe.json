@@ -71,8 +71,8 @@
     }
   },
   "textures": {
-    "layer0": "artisans-tools:item/handle",
-    "layer1": "artisans-tools:item/pickaxe_head",
-    "layer2": "artisans-tools:item/binding"
+    "layer0": "artisans-tools:item/handle_part",
+    "layer1": "artisans-tools:item/pickaxe_head_part",
+    "layer2": "artisans-tools:item/binding_part"
   }
 }

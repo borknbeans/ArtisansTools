@@ -10,7 +10,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
-import net.minecraft.data.client.TextureMap;
 import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
@@ -34,9 +33,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.HANDLE, Models.GENERATED);
 
         Supplier<JsonElement> pickaxeModelJson = () -> generateCustomItemModelJson(Arrays.asList(
-                Identifier.of(ArtisansTools.MOD_ID, "item/handle"),
-                Identifier.of(ArtisansTools.MOD_ID, "item/pickaxe_head"),
-                Identifier.of(ArtisansTools.MOD_ID, "item/binding")
+                Identifier.of(ArtisansTools.MOD_ID, "item/handle_part"),
+                Identifier.of(ArtisansTools.MOD_ID, "item/pickaxe_head_part"),
+                Identifier.of(ArtisansTools.MOD_ID, "item/binding_part")
         ));
         itemModelGenerator.writer.accept(Identifier.of(ArtisansTools.MOD_ID, "item/pickaxe"), pickaxeModelJson);
     }
