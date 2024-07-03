@@ -13,6 +13,7 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -92,13 +93,21 @@ public class ItemForgeScreenHandler extends ScreenHandler {
         if (!s0.isEmpty() && !s1.isEmpty() && !s2.isEmpty() && s0.isIn(ModTags.Items.HANDLES) && s1.isIn(ModTags.Items.BINDINGS) && s2.isIn(ModTags.Items.PICKAXE_HEADS)) {
             ItemStack recipeResult = ModItems.PICKAXE.getDefaultStack();
 
-            NbtCompound compound = s2.getComponents().get(ModDataComponentTypes.MATERIALS).copyNbt();
-            recipeResult.apply(ModDataComponentTypes.MATERIALS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
-                for (String key: compound.getKeys()) {
-                    NbtElement element = compound.get(key);
+            NbtCompound c0 = s0.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
+            NbtCompound c1 = s1.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
+            NbtCompound c2 = s2.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
+            recipeResult.apply(ModDataComponentTypes.ARTISANS_TOOLS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
 
-                    currentNbt.put(key, element);
-                }
+                NbtElement m0 = c0.get("material");
+                NbtElement m1 = c1.get("material");
+                NbtElement m2 = c2.get("material");
+
+                NbtList materialList = new NbtList();
+                materialList.add(0, m0);
+                materialList.add(1, m1);
+                materialList.add(2, m2);
+
+                currentNbt.put("materials", materialList);
             }));
 
             outputInventory.setStack(0, recipeResult);

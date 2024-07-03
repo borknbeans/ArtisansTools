@@ -1,20 +1,18 @@
 package borknbeans.artisanstools.item;
 
 import borknbeans.artisanstools.ArtisansTools;
-import borknbeans.artisanstools.tools.ModularToolItem;
 import borknbeans.artisanstools.tools.ModularToolSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
     public static final Item PICKAXE_HEAD = registerItem("pickaxe_head", new Item(new ModularToolSettings()));
-    public static final Item HANDLE = registerItem("handle", new Item(new Item.Settings()));
-    public static final Item BINDING = registerItem("binding", new Item(new Item.Settings()));
+    public static final Item HANDLE = registerItem("handle", new Item(new ModularToolSettings()));
+    public static final Item BINDING = registerItem("binding", new Item(new ModularToolSettings()));
 
     public static final Item PICKAXE = registerItem("pickaxe", new PickaxeItem(ToolMaterials.DIAMOND, new Item.Settings()));
 

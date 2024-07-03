@@ -11,7 +11,7 @@ import java.util.function.UnaryOperator;
 
 public class ModDataComponentTypes {
 
-    public static ComponentType<NbtComponent> MATERIALS = registerDataComponentType("materials", builder -> builder.codec(NbtComponent.CODEC));
+    public static ComponentType<NbtComponent> ARTISANS_TOOLS = registerDataComponentType("data", builder -> builder.codec(NbtComponent.CODEC));
 
     private static <T> ComponentType<T> registerDataComponentType(String name, UnaryOperator<ComponentType.Builder<T>> builderOperator) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(ArtisansTools.MOD_ID, name), ((ComponentType.Builder)builderOperator.apply(ComponentType.builder())).build());

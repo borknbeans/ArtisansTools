@@ -1,6 +1,7 @@
 package borknbeans.artisanstools.mixin.client;
 
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.materials.Materials;
 import borknbeans.artisanstools.util.ModDataComponentTypes;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.item.ItemRenderer;
@@ -10,6 +11,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.util.Colors;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
@@ -43,46 +45,35 @@ public class ItemRendererMixin {
     }
 
     private void renderBakedItemQuadsWithColor(MatrixStack matrices, VertexConsumer vertices, List<BakedQuad> quads, ItemStack stack, int light, int overlay) {
-        int headColor = Colors.WHITE;
-        int bindingColor = Colors.WHITE;
-        int handleColor = Colors.WHITE;
+        NbtComponent artisansToolsData = stack.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS);
+        NbtList materialsList = null;
+        if (artisansToolsData != null) {
+            NbtCompound data = artisansToolsData.copyNbt();
 
-
-        NbtComponent component = stack.getComponents().get(ModDataComponentTypes.MATERIALS);
-        if (component != null) {
-            NbtCompound compound = component.copyNbt();
-
-            headColor = compound.getInt("head");
-            bindingColor = compound.getInt("binding");
-            handleColor = compound.getInt("handle");
+            materialsList = data.getList("materials", 8);
         }
 
         MatrixStack.Entry entry = matrices.peek();
+
+        String curr = "";
+        int layerIndex = -1;
+        Materials material = Materials.WOOD; // Default
         for (BakedQuad bakedQuad : quads) {
-
-            // 0xAARRGGBB format
-            int i = Colors.WHITE;
             String layerName = bakedQuad.getSprite().getContents().getId().getPath();
-            if (layerName.contains("handle")) {
-                i = handleColor;
-            } else if (layerName.contains("head")) {
-                i = headColor;
-            } else if (layerName.contains("binding")) {
-                i = bindingColor;
+            if (!curr.equals(layerName)) {
+                curr = layerName;
+                layerIndex++;
+                if (materialsList != null && layerIndex < materialsList.size()) {
+                    material = Materials.valueOf(materialsList.getString(layerIndex));
+                }
             }
-            /*
-            NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);
-            if (data != null) {
-                NbtCompound value = data.copyNbt();
 
+            int color = material.getColor();
 
-            }
-             */
-
-            float f = (float) ColorHelper.Argb.getAlpha((int)i) / 255.0f;
-            float g = (float)ColorHelper.Argb.getRed((int)i) / 255.0f;
-            float h = (float)ColorHelper.Argb.getGreen((int)i) / 255.0f;
-            float j = (float)ColorHelper.Argb.getBlue((int)i) / 255.0f;
+            float f = (float) ColorHelper.Argb.getAlpha((int)color) / 255.0f;
+            float g = (float)ColorHelper.Argb.getRed((int)color) / 255.0f;
+            float h = (float)ColorHelper.Argb.getGreen((int)color) / 255.0f;
+            float j = (float)ColorHelper.Argb.getBlue((int)color) / 255.0f;
             vertices.quad(entry, bakedQuad, g, h, j, f, light, overlay);
         }
     }
