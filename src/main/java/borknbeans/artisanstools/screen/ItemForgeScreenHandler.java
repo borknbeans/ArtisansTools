@@ -2,6 +2,7 @@ package borknbeans.artisanstools.screen;
 
 import borknbeans.artisanstools.block.ModBlocks;
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.materials.Materials;
 import borknbeans.artisanstools.util.ModDataComponentTypes;
 import borknbeans.artisanstools.util.ModTags;
 import net.minecraft.component.type.NbtComponent;
@@ -14,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -113,7 +115,59 @@ public class ItemForgeScreenHandler extends ScreenHandler {
 
             outputInventory.setStack(0, recipeResult);
             // serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, recipeResult));
+        } else if (!s0.isEmpty() && s0.isIn(ModTags.Items.MATERIALS)) {
+            ItemStack recipeResult = ModItems.HANDLE.getDefaultStack();
+
+            Materials material = getMaterial(s0);
+
+            recipeResult.apply(ModDataComponentTypes.ARTISANS_TOOLS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
+                NbtList materialList = new NbtList();
+                NbtString matNbt = NbtString.of(material.toString());
+                materialList.add(0, matNbt);
+                currentNbt.put("materials", materialList);
+            }));
+
+            outputInventory.setStack(0, recipeResult);
+        } else if (!s1.isEmpty() && s1.isIn(ModTags.Items.MATERIALS)) {
+            ItemStack recipeResult = ModItems.BINDING.getDefaultStack();
+
+            Materials material = getMaterial(s1);
+
+            recipeResult.apply(ModDataComponentTypes.ARTISANS_TOOLS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
+                NbtList materialList = new NbtList();
+                NbtString matNbt = NbtString.of(material.toString());
+                materialList.add(0, matNbt);
+                currentNbt.put("materials", materialList);
+            }));
+
+            outputInventory.setStack(0, recipeResult);
+        } else if (!s2.isEmpty() && s2.isIn(ModTags.Items.MATERIALS)) {
+            ItemStack recipeResult = ModItems.PICKAXE_HEAD.getDefaultStack();
+
+            Materials material = getMaterial(s2);
+
+            recipeResult.apply(ModDataComponentTypes.ARTISANS_TOOLS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
+                NbtList materialList = new NbtList();
+                NbtString matNbt = NbtString.of(material.toString());
+                materialList.add(0, matNbt);
+                currentNbt.put("materials", materialList);
+            }));
+
+            outputInventory.setStack(0, recipeResult);
         }
+    }
+
+    private Materials getMaterial(ItemStack stack) {
+        if (stack.isIn(ModTags.Items.WOOD)) {
+            return Materials.WOOD;
+        } else if (stack.isIn(ModTags.Items.STONE)) {
+            return Materials.STONE;
+        } else if (stack.isIn(ModTags.Items.IRON)) {
+            return Materials.IRON;
+        } else if (stack.isIn(ModTags.Items.GOLD)) {
+            return Materials.GOLD;
+        }
+        return null;
     }
 
     @Override
