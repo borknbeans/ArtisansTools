@@ -7,5 +7,7 @@
   "itemgroup.test": "Test Item Group",
 
   "block.artisans-tools.item_container": "Item Container",
-  "block.artisans-tools.item_forge": "Item Forge"
+  "block.artisans-tools.item_forge": "Item Forge",
+
+  "tooltip.artisans-tools.durability": "%d / %d"
 }

@@ -2,6 +2,7 @@ package borknbeans.artisanstools.screen;
 
 import borknbeans.artisanstools.block.ModBlocks;
 import borknbeans.artisanstools.item.ModItems;
+import borknbeans.artisanstools.item.ModularPickaxeItem;
 import borknbeans.artisanstools.materials.Materials;
 import borknbeans.artisanstools.util.ModDataComponentTypes;
 import borknbeans.artisanstools.util.ModTags;
@@ -94,21 +95,24 @@ public class ItemForgeScreenHandler extends ScreenHandler {
         ItemStack s2 = inputInventory.getStack(2);
 
         if (!s0.isEmpty() && !s1.isEmpty() && !s2.isEmpty() && s0.isIn(ModTags.Items.HANDLES) && s1.isIn(ModTags.Items.BINDINGS) && s2.isIn(ModTags.Items.PICKAXE_HEADS)) {
-            ItemStack recipeResult = ModItems.PICKAXE.getDefaultStack();
+
 
             NbtCompound c0 = s0.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
             NbtCompound c1 = s1.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
             NbtCompound c2 = s2.getComponents().get(ModDataComponentTypes.ARTISANS_TOOLS).copyNbt();
+
+            String m0 = c0.getList("materials", 8).getString(0); // handle
+            String m1 = c1.getList("materials", 8).getString(0); // binding
+            String m2 = c2.getList("materials", 8).getString(0); // pick head
+
+            ModularPickaxeItem pickaxe = (ModularPickaxeItem)(ModItems.PICKAXE);
+            ItemStack recipeResult = pickaxe.getModularPickaxe(Materials.valueOf(m2.toString()), Materials.valueOf(m1.toString()), Materials.valueOf(m0.toString()));
             recipeResult.apply(ModDataComponentTypes.ARTISANS_TOOLS, NbtComponent.DEFAULT, comp -> comp.apply(currentNbt -> {
 
-                NbtElement m0 = c0.getList("materials", 8).get(0);
-                NbtElement m1 = c1.getList("materials", 8).get(0);
-                NbtElement m2 = c2.getList("materials", 8).get(0);
-
                 NbtList materialList = new NbtList();
-                materialList.add(0, m0); // handle
-                materialList.add(1, m2); // pickaxe head
-                materialList.add(2, m1); // binding
+                materialList.add(0, NbtString.of(m0)); // handle
+                materialList.add(1, NbtString.of(m2)); // pickaxe head
+                materialList.add(2, NbtString.of( m1)); // binding
 
                 currentNbt.put("materials", materialList);
             }));

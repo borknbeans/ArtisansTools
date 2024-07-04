@@ -1,6 +1,7 @@
 package borknbeans.artisanstools.item;
 
 import borknbeans.artisanstools.ArtisansTools;
+import borknbeans.artisanstools.materials.Materials;
 import borknbeans.artisanstools.tools.ModularToolSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -14,7 +15,7 @@ public class ModItems {
     public static final Item HANDLE = registerItem("handle", new Item(new ModularToolSettings()));
     public static final Item BINDING = registerItem("binding", new Item(new ModularToolSettings()));
 
-    public static final Item PICKAXE = registerItem("pickaxe", new PickaxeItem(ToolMaterials.DIAMOND, new Item.Settings()));
+    public static final Item PICKAXE = registerItem("pickaxe", new ModularPickaxeItem(Materials.WOOD, new Item.Settings()));
 
     private static void addItemsToToolsItemGroup(FabricItemGroupEntries entries) {
         entries.add(PICKAXE);
